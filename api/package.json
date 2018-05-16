@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.235.1",
+    "cors": "^2.8.4",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "express-graphql": "^0.6.12",
