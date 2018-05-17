@@ -26,7 +26,10 @@ server
     res.redirect('/cancel')
   })
   .get('/*', async (req, res) => {
-    const client = createApolloClient({ ssrMode: true })
+    const client = createApolloClient({
+      ssrMode: true,
+      uri: process.env.RAZZLE_API_URL || '/graphql',
+    })
     const customRenderer = node => {
       const App = <ApolloProvider client={client}>{node}</ApolloProvider>
       return getDataFromTree(App).then(() => {

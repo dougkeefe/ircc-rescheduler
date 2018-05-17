@@ -26,7 +26,10 @@ const catalogs = { en: unpackCatalog(en), fr: unpackCatalog(fr) }
 const dev =
   process.env.NODE_ENV !== 'production' ? require('lingui-i18n/dev') : undefined
 
-const client = createApolloClient({ ssrMode: false })
+const client = createApolloClient({
+  ssrMode: false,
+  uri: process.env.RAZZLE_API_URL || '/graphql',
+})
 
 ensureReady(routes).then(data =>
   hydrate(

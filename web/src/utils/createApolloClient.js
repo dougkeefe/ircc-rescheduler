@@ -42,13 +42,14 @@ const stateLink = withClientState({
   },
   typeDefs,
 })
-const createApolloClient = ({ ssrMode }) =>
-  new ApolloClient({
+const createApolloClient = ({ ssrMode, uri = '/graphql' }) => {
+  return new ApolloClient({
     ssrMode,
-    link: ApolloLink.from([stateLink, new HttpLink({ fetch })]),
+    link: ApolloLink.from([stateLink, new HttpLink({ fetch, uri })]),
     cache: ssrMode
       ? new InMemoryCache()
       : new InMemoryCache().restore(window.__APOLLO_STATE__),
   })
+}
 
 export default createApolloClient
