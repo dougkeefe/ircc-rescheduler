@@ -5,6 +5,9 @@ const {
   GraphQLNonNull,
   GraphQLList,
 } = require('graphql')
+
+const sendMail = require('./sendmail')
+
 const { GraphQLError } = require('graphql/error')
 
 const createSchema = t => {
@@ -69,9 +72,8 @@ const createSchema = t => {
           let applicantParams = await buildParams(applicantOptions)
 
           try {
-            staffResponse = await mailer.sendMail(staffParams)
-            applicantResponse = await mailer.sendMail(applicantParams)
-
+            staffResponse = await sendMail(mailer, staffParams)
+            applicantResponse = await sendMail(mailer, applicantParams)
             return [staffResponse, applicantResponse]
           } catch (e) {
             return new GraphQLError(e.message)
