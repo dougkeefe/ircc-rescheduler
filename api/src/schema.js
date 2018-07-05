@@ -10,6 +10,13 @@ const sendMail = require('./sendmail')
 
 const { GraphQLError } = require('graphql/error')
 
+const handleMailError = e => {
+  return {
+    messageId: null,
+    errorMessage: e.message,
+  }
+}
+
 const createSchema = t => {
   const MailResponse = require('./types/MailResponse').default(t)
   const RescheduleFormInput = require('./types/RescheduleForm').default(t)
@@ -72,8 +79,13 @@ const createSchema = t => {
           let applicantParams = await buildParams(applicantOptions)
 
           try {
-            staffResponse = await sendMail(mailer, staffParams)
-            applicantResponse = await sendMail(mailer, applicantParams)
+            staffResponse = await sendMail(mailer, staffParams).catch(
+              handleMailError,
+            )
+            applicantResponse = await sendMail(mailer, applicantParams).catch(
+              handleMailError,
+            )
+
             return [staffResponse, applicantResponse]
           } catch (e) {
             return new GraphQLError(e.message)

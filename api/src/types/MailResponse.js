@@ -15,6 +15,13 @@ const createMailResponse = t => {
         description: t('types.mailResponse.statusCode'),
         resolve: root => root.messageId,
       },
+      errorMessage: {
+        type: GraphQLString,
+        description: t('types.mailResponse.errorMessage'),
+        resolve: root => {
+          return root.errorMessage
+        },
+      },
     }),
   })
 
