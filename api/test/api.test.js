@@ -3,6 +3,8 @@ const Server = require('../src/server').default
 
 const reqId = 'ad6b987e-4722-11e8-8771-5546b650d95e'
 const msgId = '01000162f3ba365d-b87e3e31-b93c-47bb-97ba-631c33ae7267-000000'
+
+/*
 let mockSES = {
   sendMail: jest.fn(() => {
     return Promise.resolve({
@@ -11,15 +13,25 @@ let mockSES = {
     })
   }),
 }
+*/
+
+let mockSES = {
+  sendMail: (params, cb) => {
+    cb(null, {
+      response: reqId,
+      messageId: msgId,
+    })
+  },
+}
 
 describe('Mutations', () => {
   describe('decline', () => {
     describe('when an error occurs while sending', () => {
       it('returns a properly formatted GraphQL errors array', async () => {
         let errorMock = {
-          sendMail: jest.fn(() => {
-            return Promise.reject(new Error('so unhappy right now'))
-          }),
+          sendMail: (params, cb) => {
+            cb(new Error('so unhappy right now'))
+          },
         }
         let app = Server({
           mailer: errorMock,
@@ -40,14 +52,15 @@ describe('Mutations', () => {
                 reason: "because reasons"
                 availability: ["2018-06-26","2018-06-29","2018-07-31"]
               }){
-                messageId
+                messageId,
+                errorMessage
 							}
             }
         `)
-        let {
-          errors: [err],
-        } = response.body
-        expect(err.message).toEqual('so unhappy right now')
+
+        let { decline: errors } = response.body.data
+
+        expect(errors[0].errorMessage).toEqual('so unhappy right now')
       })
     })
 
