@@ -163,13 +163,10 @@
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.7.1.tgz#e44e596d03c9f16ba3b127ad333a8a072bcb5a0a"
 
-"@jaredpalmer/after@^1.3.1":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@jaredpalmer/after/-/after-1.3.1.tgz#c7f91988a0ba3caced10483bc3642f733a4f6ddf"
-  dependencies:
-    react-helmet "^5.2.0"
-    react-router-dom "^4.2.2"
-    serialize-javascript "^1.5.0"
+"@jaredpalmer/after@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@jaredpalmer/after/-/after-1.4.0.tgz#a5b96fc45e0b117e02b55aaf72fd3ea2fd837bbb"
+  integrity sha512-w8d++YXRzinSdvf6wPkXZvttOZQ0b5DAb1APycc2D6/lSGLtZclz0dW6FvDkQq1yESceAO6onAWyyow3qiASZg==
 
 "@types/async@2.0.49":
   version "2.0.49"
@@ -7834,7 +7831,7 @@ send@0.16.2:
     range-parser "~1.2.0"
     statuses "~1.4.0"
 
-serialize-javascript@^1.4.0, serialize-javascript@^1.5.0:
+serialize-javascript@^1.4.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-1.5.0.tgz#1aa336162c88a890ddad5384baebc93a655161fe"
 
