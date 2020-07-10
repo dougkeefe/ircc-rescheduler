@@ -36,7 +36,7 @@
     "graphql-custom-types": "^1.4.0",
     "graphql-iso-date": "^3.5.0",
     "graphql-tag": "^2.9.2",
-    "i18next": "^11.3.1",
+    "i18next": "^19.5.5",
     "i18next-express-middleware": "^1.1.1",
     "inline-css": "^2.4.0",
     "nodemailer": "^4.6.7"
