@@ -31,7 +31,7 @@
     "final-form": "^4.4.0",
     "full-icu": "^1.2.1",
     "graphql": "^0.13.2",
-    "graphql-request": "^1.6.0",
+    "graphql-request": "^2.0.0",
     "graphql-tag": "^2.8.0",
     "helmet": "^3.12.1",
     "hoist-non-react-statics": "^2.5.5",
