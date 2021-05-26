@@ -41,7 +41,7 @@
     "moment": "2.22.0",
     "prop-types": "^15.6.1",
     "raven-js": "^3.25.2",
-    "razzle": "^2.1.0",
+    "razzle": "^4.0.1",
     "react": "16.3.1",
     "react-apollo": "^2.1.2",
     "react-day-picker": "^7.1.4",
